@@ -110,6 +110,8 @@ sassLint.lintText = function (file, options, configPath) {
 
   try {
     ast = groot(file.text, file.format, file.filename);
+    ruleToggles = getToggledRules(ast);
+    isEnabledFilter = isResultEnabled(ruleToggles);
   }
   catch (e) {
     var line = e.line || 1;
